@@ -6,4 +6,8 @@
     <string name="app_slogan">You never get second chance to make a first impression</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="item_list_main_image">Imagen representativa para cada peinado</string>
+    <string name="item_list_main_title">Título</string>
+    <string name="item_list_main_description">Descripción</string>
+    <string name="item_list_main_price">Precio</string>
 </resources>

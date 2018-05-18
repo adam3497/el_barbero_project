@@ -3,6 +3,7 @@
     <color name="colorPrimary">#FFF</color>
     <color name="colorPrimaryDark">#A1887F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="black">#000</color>
+    <color name="black">#000000</color>
+    <color name="blackOpacity">#4D000000</color>
     <color name="colorBackgroundSplashScreen">#000</color>
 </resources>
