@@ -8,27 +8,28 @@
     tools:context="develop.elbarberoapptest.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <FrameLayout
-        android:layout_weight="1"
+    <!--In this list the created layouts will appears-->
+    <ListView
+        android:id="@+id/lv_main"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/empty_list"
         android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:padding="3dp">
-
-        <!--In this list the created layouts will appears-->
-        <ListView
-            android:id="@id/android:list"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-        </ListView>
-
-        <TextView
-            android:id="@+id/empty_list"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="center"
-            android:padding="5dp"
-            style="@android:style/TextAppearance.Large"/>
-    </FrameLayout>
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/list_main_empty"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42000002" />
 
 </android.support.constraint.ConstraintLayout>

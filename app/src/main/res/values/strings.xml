@@ -10,4 +10,5 @@
     <string name="item_list_main_title">Título</string>
     <string name="item_list_main_description">Descripción</string>
     <string name="item_list_main_price">Precio</string>
+    <string name="list_main_empty">Cargando…</string>
 </resources>

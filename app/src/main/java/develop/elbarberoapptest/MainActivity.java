@@ -19,6 +19,12 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setToolBar();
+
+        
+    }
+
+    private void setToolBar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getResources().getString(R.string.app_name));
         toolbar.setTitleTextColor(Color.BLACK);
@@ -38,8 +44,6 @@ public class MainActivity extends AppCompatActivity
         menuIcon.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(menuIcon);
-
-
     }
 
     @Override
