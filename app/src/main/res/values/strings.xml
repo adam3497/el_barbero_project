@@ -11,4 +11,7 @@
     <string name="item_list_main_description">Descripción</string>
     <string name="item_list_main_price">Precio</string>
     <string name="list_main_empty">Cargando…</string>
+    <string name="option_main_menu_franq">Franquicias</string>
+    <string name="option_main_menu_contact">Contacto</string>
+    <string name="option_about">Acerca de</string>
 </resources>

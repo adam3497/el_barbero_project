@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="200dp">
 
-    <ImageView
+    <com.github.snowdream.android.widget.SmartImageView
         android:id="@+id/iv_item_main_background"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:contentDescription="@string/item_list_main_description"
-        android:scaleType="centerCrop"
-        android:src="@drawable/brad_pitt" />
+        android:scaleType="centerCrop" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
