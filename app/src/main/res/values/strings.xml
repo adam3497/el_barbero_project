@@ -14,4 +14,10 @@
     <string name="option_main_menu_franq">Franquicias</string>
     <string name="option_main_menu_contact">Contacto</string>
     <string name="option_about">Acerca de</string>
+    <string name="nav_opt_home">Inicio</string>
+    <string name="nav_opt_products">Productos</string>
+    <string name="nav_opt_date">Programar cita</string>
+    <string name="nav_opt_settings">Ajustes</string>
+    <string name="title_activity_products">ProductsActivity</string>
+    <string name="list_products_empty">Cargando datos…</string>
 </resources>
