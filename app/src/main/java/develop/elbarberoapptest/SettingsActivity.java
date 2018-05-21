@@ -22,8 +22,11 @@ import android.preference.RingtonePreference;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On
@@ -38,12 +41,36 @@ import java.util.List;
  */
 public class SettingsActivity extends AppCompatPreferenceActivity {
 
+    private ListPreference lpLanguages;
+    private ListPreference lpCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.settings);
         setupActionBar();
+
+        lpLanguages = (ListPreference) findPreference("list_language");
+        lpLanguages.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object o) {
+                if(preference.getKey().equals("list_language")){
+                    Toast.makeText(SettingsActivity.this, "La opción del idioma cambió de " + lpLanguages.getValue() + " a " + o.toString(), Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });
+
+        lpCalendar = (ListPreference) findPreference("calendar_timestamp");
+        lpCalendar.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object o) {
+                if(preference.getKey().equals("calendar_timestamp")){
+                    Toast.makeText(SettingsActivity.this, "La opción del calendario cambió de " + lpCalendar.getValue() + " a " + o.toString(), Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });
     }
 
     /**

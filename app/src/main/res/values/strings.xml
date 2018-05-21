@@ -51,9 +51,19 @@
         <item>120 min</item>
     </string-array>
     <string name="pref_opt_settings_language">Idioma</string>
+    <string-array name="pref_opt_languages_values">
+        <item>es</item>
+        <item>en</item>
+    </string-array>
+    <string-array name="pref_opt_language_entries">
+        <item>Español</item>
+        <item>English</item>
+    </string-array>
     <string name="pref_category_name_email_notf">Correos y notificaciones</string>
     <string name="pref_opt_send_comf_email">Enviarme correo de confirmación</string>
+    <string name="pref_opt_send_comf_email_summary">Recibir correos de confirmación al reservar y comprar en la aplicación</string>
     <string name="pref_opt_send_notf_mov">Enviarme notificaciones por móvil</string>
+    <string name="pref_opt_send_notf_mov_summary">Recivir notificaciones de esta empresa</string>
 
     <string name="cancel_button">Cancelar</string>
 </resources>

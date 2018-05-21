@@ -49,5 +49,33 @@
 
         </ListPreference>
 
+        <ListPreference
+            android:key="list_language"
+            android:title="@string/pref_opt_settings_language"
+            android:dialogTitle="@string/pref_opt_settings_language"
+            android:negativeButtonText="@string/cancel_button"
+            android:entryValues="@array/pref_opt_languages_values"
+            android:entries="@array/pref_opt_language_entries">
+
+        </ListPreference>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="communication_section"
+        android:title="@string/pref_category_name_email_notf">
+
+        <CheckBoxPreference
+            android:key="send_email"
+            android:title="@string/pref_opt_send_comf_email"
+            android:summary="@string/pref_opt_send_comf_email_summary"
+            android:defaultValue="false"/>
+
+        <CheckBoxPreference
+            android:key="notf_mov"
+            android:title="@string/pref_opt_send_notf_mov"
+            android:summary="@string/pref_opt_send_notf_mov_summary"
+            android:defaultValue="false"/>
+
     </PreferenceCategory>
 </PreferenceScreen>
