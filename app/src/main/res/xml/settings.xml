@@ -1,0 +1,53 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="help_section"
+        android:title="@string/pref_category_name_asistencia">
+
+        <PreferenceScreen
+            android:key="launch_help_centere"
+            android:title="@string/pref_opt_name_help_Center">
+
+            <!--<intent android:action="launch.email.activity"/>-->
+
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="launch_politic_mb"
+            android:title="@string/pref_opt_privacity_politic_mb">
+
+            <!--<intent android:action="launch.email.activity"/>-->
+
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="launch_politic_ebcr"
+            android:title="@string/pref_opt_privacity_ploitic_ebcr">
+
+            <!--<intent android:action="launch.email.activity"/>-->
+
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="version_app"
+            android:title="@string/pref_opt_version_app">
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="settings_section"
+        android:title="@string/pref_category_name_adjust">
+
+        <ListPreference
+            android:key="calendar_timestamp"
+            android:title="@string/pref_opt_settings_date"
+            android:entryValues="@array/pref_opt_date_values"
+            android:entries="@array/pref_opt_date_entries"
+            android:dialogTitle="@string/pref_opt_settings_date"
+            android:negativeButtonText="@string/cancel_button">
+
+        </ListPreference>
+
+    </PreferenceCategory>
+</PreferenceScreen>

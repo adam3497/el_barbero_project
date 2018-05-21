@@ -18,8 +18,42 @@
     <string name="nav_opt_products">Productos</string>
     <string name="nav_opt_date">Programar cita</string>
     <string name="nav_opt_settings">Ajustes</string>
-    <string name="title_activity_products">ProductsActivity</string>
+    <string name="title_activity_products">Productos</string>
     <string name="list_products_empty">No hay datos para mostrar</string>
     <string name="item_list_product_name">Nombre producto</string>
     <string name="item_list_product_price">Precio Producto</string>
+    <string name="title_activity_settings">Ajustes</string>
+
+    <string name="pref_category_name_asistencia">Asistencia</string>
+    <string name="pref_opt_name_help_Center">Centro de ayuda</string>
+    <string name="pref_opt_privacity_politic_mb">Política de Privacidad MINDBODY</string>
+    <string name="pref_opt_privacity_ploitic_ebcr">Política de Privacidad ElBarberoCR</string>
+    <string name="pref_opt_version_app">Versión 1.0.0</string>
+    <string name="pref_category_name_adjust">Ajustes</string>
+
+    <string name="pref_opt_settings_date">Calendario</string>
+    <string-array name="pref_opt_date_values">
+        <item>0</item>
+        <item>15</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>90</item>
+        <item>120</item>
+    </string-array>
+    <string-array name="pref_opt_date_entries">
+        <item>Ninguno</item>
+        <item>15 min</item>
+        <item>30 min</item>
+        <item>45 min</item>
+        <item>60 min</item>
+        <item>90 min</item>
+        <item>120 min</item>
+    </string-array>
+    <string name="pref_opt_settings_language">Idioma</string>
+    <string name="pref_category_name_email_notf">Correos y notificaciones</string>
+    <string name="pref_opt_send_comf_email">Enviarme correo de confirmación</string>
+    <string name="pref_opt_send_notf_mov">Enviarme notificaciones por móvil</string>
+
+    <string name="cancel_button">Cancelar</string>
 </resources>

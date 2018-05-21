@@ -190,6 +190,8 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_date:
                 break;
             case R.id.nav_settings:
+                Intent settings = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(settings);
                 break;
             case R.id.nav_about:
                 break;
