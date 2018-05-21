@@ -14,6 +14,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity
     private static final String IMAGES_DIR = "https://api.github.com/repos/adam3497/el_barbero_project/contents/imagenes?ref=imagenes";
     private static final String CONTENT_IMAGES = "https://raw.githubusercontent.com/adam3497/el_barbero_project/imagenes/imagenes/";
 
+    private SwipeRefreshLayout refreshLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +66,15 @@ public class MainActivity extends AppCompatActivity
         descripcion = new ArrayList<>();
 
         listItemsMain = (ListView) findViewById(R.id.lv_main);
+        refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_list);
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                refreshLayout.setRefreshing(false);
+                startActivity(intent);
+            }
+        });
         descargarImagen();
         
     }
