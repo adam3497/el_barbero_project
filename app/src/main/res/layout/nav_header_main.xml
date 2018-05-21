@@ -18,7 +18,8 @@
         android:layout_height="88dp"
         android:layout_gravity="center"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@drawable/logo_el_barbero" />
+        app:srcCompat="@drawable/logo_el_barbero"
+        android:contentDescription="@string/logo_description"/>
 
     <TextView
         android:layout_width="match_parent"

@@ -3,11 +3,11 @@ package develop.elbarberoapptest;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -17,7 +17,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,8 +29,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.snowdream.android.widget.SmartImageView;
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,7 +37,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import cz.msebera.android.httpclient.Header;
 import develop.elbarberoapptest.utils.GetResponseTask;
 
 public class MainActivity extends AppCompatActivity
@@ -53,6 +49,7 @@ public class MainActivity extends AppCompatActivity
     private ArrayList<String> descripcion;
 
     private static final String IMAGES_DIR = "https://api.github.com/repos/adam3497/el_barbero_project/contents/imagenes?ref=imagenes";
+    private static final String CONTENT_IMAGES = "https://raw.githubusercontent.com/adam3497/el_barbero_project/imagenes/imagenes/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -183,8 +180,12 @@ public class MainActivity extends AppCompatActivity
 
         switch (id){
             case R.id.nav_home:
+                Intent inicio = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(inicio);
                 break;
             case R.id.nav_products:
+                Intent productos = new Intent(getApplicationContext(), ProductsActivity.class);
+                startActivity(productos);
                 break;
             case R.id.nav_date:
                 break;
@@ -259,7 +260,7 @@ public class MainActivity extends AppCompatActivity
             price = (TextView) vg.findViewById(R.id.txt_item_main_price);
 
             Rect rect = new Rect(smartImageView.getLeft(), smartImageView.getTop(), smartImageView.getRight(), smartImageView.getBottom());
-            String finalUrl = "https://raw.githubusercontent.com/adam3497/el_barbero_project/imagenes/imagenes/" + imagenes.get(i);
+            String finalUrl = CONTENT_IMAGES + imagenes.get(i);
             System.out.println(finalUrl);
             smartImageView.setImageUrl(finalUrl, rect);
 
