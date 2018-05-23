@@ -200,12 +200,16 @@ public class MainActivity extends AppCompatActivity
                 startActivity(productos);
                 break;
             case R.id.nav_date:
+                Intent date = new Intent(getApplicationContext(), ProgramDate.class);
+                startActivity(date);
                 break;
             case R.id.nav_settings:
                 Intent settings = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(settings);
                 break;
             case R.id.nav_about:
+                Intent about = new Intent(getApplicationContext(), AboutActivity.class);
+                startActivity(about);
                 break;
         }
 
@@ -231,7 +235,8 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(this, "Contacto se está mostrando", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.opt_about:
-                Toast.makeText(this, "About se está mostrando", Toast.LENGTH_SHORT).show();
+                Intent about = new Intent(getApplicationContext(), AboutActivity.class);
+                startActivity(about);
                 break;
         }
         return super.onOptionsItemSelected(item);

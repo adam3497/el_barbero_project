@@ -66,4 +66,6 @@
     <string name="pref_opt_send_notf_mov_summary">Recivir notificaciones de esta empresa</string>
 
     <string name="cancel_button">Cancelar</string>
+    <string name="title_activity_program_date">Programar cita</string>
+    <string name="title_activity_about">Acerca dey</string>
 </resources>
