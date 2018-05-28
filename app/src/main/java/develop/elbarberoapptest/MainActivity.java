@@ -38,6 +38,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import develop.elbarberoapptest.db.DatabaseServiceHelper;
 import develop.elbarberoapptest.utils.GetResponseTask;
 
 public class MainActivity extends AppCompatActivity
@@ -60,6 +61,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         setToolBar();
 
+        DatabaseServiceHelper serviceHelper = new DatabaseServiceHelper(getApplicationContext());
+
         imagenes = new ArrayList<>();
         titulo = new ArrayList<>();
         precio = new ArrayList<>();
@@ -75,12 +78,12 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-        descargarImagen();
+        downloadImage();
         
     }
 
     @SuppressLint("StaticFieldLeak")
-    private void descargarImagen() {
+    private void downloadImage() {
         titulo.clear();
         precio.clear();
         descripcion.clear();
