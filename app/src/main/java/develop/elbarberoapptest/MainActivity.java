@@ -2,8 +2,11 @@ package develop.elbarberoapptest;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
@@ -33,62 +36,62 @@ import com.github.snowdream.android.widget.SmartImageView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
+import org.json.JSONObject;;
 import java.util.ArrayList;
 import java.util.List;
 
+import develop.elbarberoapptest.db.DatabaseModel;
 import develop.elbarberoapptest.db.DatabaseServiceHelper;
+import develop.elbarberoapptest.utils.CustomMainAdapter;
 import develop.elbarberoapptest.utils.GetResponseTask;
+import develop.elbarberoapptest.utils.ItemListMain;
+
+import static develop.elbarberoapptest.utils.ServiceXmlFileUtils.getDescriptionFor;
+import static develop.elbarberoapptest.utils.ServiceXmlFileUtils.getImageUrlFor;
+import static develop.elbarberoapptest.utils.ServiceXmlFileUtils.getPriceFor;
+import static develop.elbarberoapptest.utils.ServiceXmlFileUtils.getTitleFor;
+import static develop.elbarberoapptest.utils.ServiceXmlFileUtils.parseResponse;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private ListView listItemsMain;
-    private ArrayList<String> imagenes;
-    private ArrayList<String> titulo;
-    private ArrayList<String> precio;
-    private ArrayList<String> descripcion;
+    private ArrayList<ItemListMain> itemsArray;
 
-    private static final String IMAGES_DIR = "https://api.github.com/repos/adam3497/el_barbero_project/contents/imagenes?ref=imagenes";
-    private static final String CONTENT_IMAGES = "https://raw.githubusercontent.com/adam3497/el_barbero_project/imagenes/imagenes/";
+    public static final String SERVICE_DIR = "https://api.github.com/repos/adam3497/el_barbero_project/contents/services?ref=imagenes";
+    public static final String SERVICE_CONTENT = "https://raw.githubusercontent.com/adam3497/el_barbero_project/imagenes/services/";
+    public static final String IMAGES_DIR = "https://api.github.com/repos/adam3497/el_barbero_project/contents/service_images?ref=imagenes";
+    public static final String CONTENT_IMAGES = "https://raw.githubusercontent.com/adam3497/el_barbero_project/imagenes/service_images/";
 
     private SwipeRefreshLayout refreshLayout;
 
+    private DatabaseServiceHelper serviceHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setToolBar();
 
-        DatabaseServiceHelper serviceHelper = new DatabaseServiceHelper(getApplicationContext());
-
-        imagenes = new ArrayList<>();
-        titulo = new ArrayList<>();
-        precio = new ArrayList<>();
-        descripcion = new ArrayList<>();
+        itemsArray = new ArrayList<>();
+        downloadServiceFiles();
+        serviceHelper = new DatabaseServiceHelper(getApplicationContext());
 
         listItemsMain = (ListView) findViewById(R.id.lv_main);
         refreshLayout = (SwipeRefreshLayout) findViewById(R.id.refresh_list);
         refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 refreshLayout.setRefreshing(false);
-                startActivity(intent);
+                listItemsMain.setAdapter(null);
+                itemsArray = null;
+                itemsArray = new ArrayList<>();
+                downloadServiceFiles();
             }
         });
-        downloadImage();
-        
     }
 
     @SuppressLint("StaticFieldLeak")
-    private void downloadImage() {
-        titulo.clear();
-        precio.clear();
-        descripcion.clear();
-        imagenes.clear();
-
+    private void downloadServiceFiles() {
         final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
         progressDialog.setMessage("Cargando...");
         progressDialog.show();
@@ -98,24 +101,79 @@ public class MainActivity extends AppCompatActivity
             protected void onPostExecute(String response) {
                 if(response == null){
                     progressDialog.dismiss();
-                    Toast.makeText(MainActivity.this, "No se pudo conectar, hay un problema con el servidor", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "No se pudo conectar, hay un problema con el servidor", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     progressDialog.dismiss();
-                    setItemsForList(parseResponse(response));
+                    loadServices(parseResponse(response));
                 }
             }
-        }.execute(IMAGES_DIR);
+        }.execute(SERVICE_DIR);
     }
 
-    private void setItemsForList(List<String> response) {
-        imagenes.addAll(response);
+    @SuppressLint("StaticFieldLeak")
+    private void loadServices(List<String> services) {
+        // Gets the data repository in write mode
+        final SQLiteDatabase db = serviceHelper.getWritableDatabase();
+
+        for(String xmlFile : services){
+            String url = SERVICE_CONTENT + xmlFile;
+            new GetResponseTask(){
+                @Override
+                protected void onPostExecute(String response) {
+                    String title = getTitleFor(response);
+                    String description = getDescriptionFor(response);
+                    String price = getPriceFor(response);
+                    String imageURL = getImageUrlFor(response);
+
+                    ContentValues values = new ContentValues();
+                    values.put(DatabaseModel.ServiceTable.COLUMN_1, title);
+                    values.put(DatabaseModel.ServiceTable.COLUMN_2, description);
+                    values.put(DatabaseModel.ServiceTable.COLUMN_3, price);
+                    values.put(DatabaseModel.ServiceTable.COLUMN_4, imageURL);
+
+                    // Insert the new row, returning the primary key value of the new row
+                    long newRowId = db.insert(DatabaseModel.ServiceTable.TABLE_NAME, null, values);
+
+                    setItemsForList(newRowId);
+
+                }
+            }.execute(url);
+        }
+    }
+
+    private void setItemsForList(long newRowId) {
+        SQLiteDatabase db = serviceHelper.getReadableDatabase();
+
+        // Columns which we need.
+        String[] projection = {
+                DatabaseModel.ServiceTable.COLUMN_1,
+                DatabaseModel.ServiceTable.COLUMN_2,
+                DatabaseModel.ServiceTable.COLUMN_3,
+                DatabaseModel.ServiceTable.COLUMN_4,
+        };
+
+        // Filter results WHERE "_ID" = 'newRowId'
+        String selection = DatabaseModel.ServiceTable._ID + " = ?";
+        String[] selectionArgs = {"" + newRowId};
+
+        Cursor cursor = db.query(DatabaseModel.ServiceTable.TABLE_NAME, projection, selection, selectionArgs,
+                null, null, null);
+
+        while(cursor.moveToNext()){
+            String title = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseModel.ServiceTable.COLUMN_1));
+            String desc = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseModel.ServiceTable.COLUMN_2));
+            int price = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseModel.ServiceTable.COLUMN_3));
+            String image = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseModel.ServiceTable.COLUMN_4));
+
+            itemsArray.add(new ItemListMain(title, desc, price, image));
+        }
 
         final TextView empyText = (TextView) findViewById(R.id.empty_list);
-        if(imagenes.size() > 0){
+        if(itemsArray.size() > 0){
             listItemsMain.setVisibility(View.VISIBLE);
             empyText.setVisibility(View.INVISIBLE);
-            listItemsMain.setAdapter(new CustomMainAdapter(getApplicationContext()));
+            listItemsMain.setAdapter(new CustomMainAdapter(getApplicationContext(), itemsArray));
             listItemsMain.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -126,29 +184,6 @@ public class MainActivity extends AppCompatActivity
             listItemsMain.setVisibility(View.INVISIBLE);
             empyText.setVisibility(View.VISIBLE);
         }
-    }
-
-    /**
-      * parse the string (representation of a json) to get only the values associated with
-      * key "name", which are the file names of the folder requested before.
-      */
-    private List<String> parseResponse(String response) {
-        List<String> options = new ArrayList<String>();
-        try {
-            // create JSON Object
-            JSONArray jsonArray = new JSONArray(response);
-            for (int i= 0; i < jsonArray.length(); i++) {
-                // create json object for every element of the array
-                JSONObject object = jsonArray.getJSONObject(i);
-                // get the value associated with
-                options.add( object.getString("name") );
-            }
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return null;
-        }
-        return options;
     }
 
     private void setToolBar() {
@@ -243,54 +278,5 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private class CustomMainAdapter extends BaseAdapter{
-
-        private Context context;
-        private LayoutInflater layoutInflater;
-        private SmartImageView smartImageView;
-        private TextView title, description, price;
-
-        public CustomMainAdapter(Context applicationContext) {
-            this.context = applicationContext;
-            layoutInflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
-        }
-
-        @Override
-        public int getCount() {
-            return imagenes.size();
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return i;
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return i;
-        }
-
-        @SuppressLint({"InflateParams", "ViewHolder"})
-        @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            ViewGroup vg = (ViewGroup) layoutInflater.inflate(R.layout.item_main_list, null);
-            smartImageView = (SmartImageView) vg.findViewById(R.id.iv_item_main_background);
-            title = (TextView) vg.findViewById(R.id.txt_item_main_title);
-            description = (TextView) vg.findViewById(R.id.txt_item_main_description);
-            price = (TextView) vg.findViewById(R.id.txt_item_main_price);
-
-            Rect rect = new Rect(smartImageView.getLeft(), smartImageView.getTop(), smartImageView.getRight(), smartImageView.getBottom());
-            String finalUrl = CONTENT_IMAGES + imagenes.get(i);
-            System.out.println(finalUrl);
-            smartImageView.setImageUrl(finalUrl, rect);
-
-            title.setText("Título prueba " + i);
-            description.setText("Descripción prueba " + i);
-            price.setText("Precio prueba " + i);
-
-            return vg;
-        }
     }
 }

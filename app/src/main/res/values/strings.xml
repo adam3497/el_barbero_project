@@ -68,4 +68,6 @@
     <string name="cancel_button">Cancelar</string>
     <string name="title_activity_program_date">Programar cita</string>
     <string name="title_activity_about">Acerca dey</string>
+
+    <string name="item_price">Precio: {0} colones.</string>
 </resources>
