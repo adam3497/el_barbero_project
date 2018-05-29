@@ -73,7 +73,7 @@
     <string name="title_activity_login">Iniciar Sesión</string>
     <string name="title_activity_register">Registro</string>
 
-    <string name="login_image_description">Imagen representativa para la pantall de login</string>
+    <string name="login_image_description">Imagen representativa para la pantalla de login</string>
     <string name="login_etx_username_hit">Nombre de usuario o correo</string>
     <string name="login_etx_password_hint">Contraseña</string>
     <string name="login_button">Iniciar sesión</string>
@@ -82,4 +82,12 @@
     <string name="login_facebook_option">Facebook</string>
     <string name="login_google_option">Google</string>
     <string name="login_options">Iniciar sesión con:</string>
+    <string name="register_image_description">Imagen representativa para la pantalla de registro</string>
+    <string name="register_etx_user_name_hint">Nombre</string>
+    <string name="register_etx_user_last_name_hint">Apellido</string>
+    <string name="register_etx_username_hint">Escriba su nombre de usuario</string>
+    <string name="register_etx_email_hint">Correo electrónico</string>
+    <string name="register_etx_password_hint">Escriba su contraseña</string>
+    <string name="register_etx_password_validate_hint">Vuelva a escribir su contraseña</string>
+    <string name="register_button">Crear cuenta</string>
 </resources>
