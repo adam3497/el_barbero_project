@@ -70,6 +70,16 @@
     <string name="title_activity_about">Acerca dey</string>
 
     <string name="item_price">Precio: {0} colones.</string>
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_login">Iniciar Sesión</string>
+    <string name="title_activity_register">Registro</string>
+
+    <string name="login_image_description">Imagen representativa para la pantall de login</string>
+    <string name="login_etx_username_hit">Nombre de usuario o correo</string>
+    <string name="login_etx_password_hint">Contraseña</string>
+    <string name="login_button">Iniciar sesión</string>
+    <string name="login_or">O</string>
+    <string name="login_register_button">Crear nueva cuenta</string>
+    <string name="login_facebook_option">Facebook</string>
+    <string name="login_google_option">Google</string>
+    <string name="login_options">Iniciar sesión con:</string>
 </resources>

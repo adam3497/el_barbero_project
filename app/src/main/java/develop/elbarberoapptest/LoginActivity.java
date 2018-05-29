@@ -14,11 +14,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(getResources().getString(R.string.title_activity_login));
-        toolbar.setTitleTextColor(Color.BLACK);
-        setSupportActionBar(toolbar);
-        
     }
 
     @Override
