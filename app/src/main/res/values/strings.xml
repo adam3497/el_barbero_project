@@ -70,4 +70,6 @@
     <string name="title_activity_about">Acerca dey</string>
 
     <string name="item_price">Precio: {0} colones.</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
 </resources>
