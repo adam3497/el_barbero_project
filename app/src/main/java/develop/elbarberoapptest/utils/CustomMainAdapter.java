@@ -61,7 +61,7 @@ public class CustomMainAdapter extends BaseAdapter {
 
         Rect rect = new Rect(smartImageView.getLeft(), smartImageView.getTop(), smartImageView.getRight(), smartImageView.getBottom());
         String finalUrl = CONTENT_IMAGES + itemsArray.get(i).getImage();
-        System.out.println(finalUrl);
+
         smartImageView.setImageUrl(finalUrl, rect);
 
         title.setText(itemsArray.get(i).getTitle());

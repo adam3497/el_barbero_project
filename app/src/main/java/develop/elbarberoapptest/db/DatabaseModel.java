@@ -36,13 +36,13 @@ public final class DatabaseModel {
         public static final String TABLE_NAME = "Products";
         public static final String COLUMN_1 = "Title";
         public static final String COLUMN_2 = "Price";
-        public static final String COLUMN_3 = "ImagenUrl";
+        public static final String COLUMN_3 = "ImageUrl";
 
     }
 
     //method for maintaining the product table
     public static final String SQL_CREATE_PRODUCT =
-            "CREATE TABLE" + ProductTable.TABLE_NAME + "(" +
+            "CREATE TABLE " + ProductTable.TABLE_NAME + " (" +
                     ProductTable._ID + " INTEGER PRIMARY KEY," +
                     ProductTable.COLUMN_1 + " TEXT," +
                     ProductTable.COLUMN_2 + " INTEGER," +

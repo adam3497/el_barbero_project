@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity
         setToolBar();
 
         itemsArray = new ArrayList<>();
-        downloadServiceFiles();
         serviceHelper = new DatabaseServiceHelper(getApplicationContext());
 
         listItemsMain = (ListView) findViewById(R.id.lv_main);
@@ -88,6 +87,8 @@ public class MainActivity extends AppCompatActivity
                 downloadServiceFiles();
             }
         });
+
+        downloadServiceFiles();
     }
 
     @SuppressLint("StaticFieldLeak")

@@ -13,9 +13,8 @@ import static develop.elbarberoapptest.db.DatabaseModel.SQL_DELETE_SERVICE;
 
 public class DatabaseServiceHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "DataStorage.db";
-
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "DataStorage.db";
 
     public DatabaseServiceHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

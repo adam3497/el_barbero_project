@@ -29,6 +29,8 @@ public class CustomProductAdapter extends BaseAdapter {
     private TextView name, price;
     private ArrayList<ItemListProduct> itemsArray;
 
+    private static final String NO_ICON = "ic_no_icon.png";
+
     public CustomProductAdapter(Context context, ArrayList<ItemListProduct> itemsArray){
         this.context = context;
         layoutInflater = (LayoutInflater) context.getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -62,7 +64,14 @@ public class CustomProductAdapter extends BaseAdapter {
         Rect itemImage = new Rect(smivImageItem.getLeft(), smivImageItem.getTop(), smivImageItem.getRight(), smivImageItem.getBottom());
         Rect itemBackground = new Rect(smivBackground.getLeft(), smivBackground.getTop(), smivBackground.getRight(), smivBackground.getBottom());
 
-        String finalUrl = CONTENT_IMAGES_PRODUCTS + itemsArray.get(i).getImage();
+        String finalUrl;
+
+        if(itemsArray.get(i).getImage().equals("no_icon")){
+            finalUrl = CONTENT_IMAGES_PRODUCTS + NO_ICON;
+        }
+        else{
+            finalUrl = CONTENT_IMAGES_PRODUCTS + itemsArray.get(i).getImage();
+        }
         smivBackground.setImageUrl(finalUrl, itemBackground);
         smivImageItem.setImageUrl(finalUrl, itemImage);
 
