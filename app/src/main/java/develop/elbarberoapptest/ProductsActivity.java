@@ -39,8 +39,8 @@ public class ProductsActivity extends AppCompatActivity {
     private ArrayList<String> itemsPrice;
     private ArrayList<String> itemsBackground;
 
-    private static final String IMAGES_DIR = "https://api.github.com/repos/adam3497/el_barbero_project/contents/imagenes?ref=imagenes";
-    private static final String CONTENT_IMAGES = "https://raw.githubusercontent.com/adam3497/el_barbero_project/imagenes/imagenes/";
+    public static final String PRODUCT_IMAGES_DIR = "https://api.github.com/repos/adam3497/el_barbero_project/contents/imagenes?ref=imagenes";
+    public static final String CONTENT_IMAGES_PRODUCTS = "https://raw.githubusercontent.com/adam3497/el_barbero_project/imagenes/imagenes/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +89,7 @@ public class ProductsActivity extends AppCompatActivity {
                     setItemsForList(parseResponse(response));
                 }
             }
-        }.execute(IMAGES_DIR);
+        }.execute(PRODUCT_IMAGES_DIR);
     }
 
     private void setItemsForList(List<String> response) {
@@ -181,7 +181,7 @@ public class ProductsActivity extends AppCompatActivity {
             Rect itemImage = new Rect(smivImageItem.getLeft(), smivImageItem.getTop(), smivImageItem.getRight(), smivImageItem.getBottom());
             Rect itemBackground = new Rect(smivBackground.getLeft(), smivBackground.getTop(), smivBackground.getRight(), smivBackground.getBottom());
 
-            String finalUrl = CONTENT_IMAGES + itemsBackground.get(i);
+            String finalUrl = CONTENT_IMAGES_PRODUCTS + itemsBackground.get(i);
             smivBackground.setImageUrl(finalUrl, itemBackground);
             smivImageItem.setImageUrl(finalUrl, itemImage);
 

@@ -10,7 +10,7 @@ public final class DatabaseModel {
 
     private DatabaseModel(){}
 
-    /* Inner class that defines the service table */
+    //Inner class that defines the service table
     public static class ServiceTable implements BaseColumns {
         public static final String TABLE_NAME = "Services";
         public static final String COLUMN_1 = "Title";
@@ -30,5 +30,25 @@ public final class DatabaseModel {
 
     public static final String SQL_DELETE_SERVICE =
             "DROP TABLE IF EXISTS " + ServiceTable.TABLE_NAME;
+
+    //Inner class that defines the product table
+    public static class ProductTable implements BaseColumns{
+        public static final String TABLE_NAME = "Products";
+        public static final String COLUMN_1 = "Title";
+        public static final String COLUMN_2 = "Price";
+        public static final String COLUMN_3 = "ImagenUrl";
+
+    }
+
+    //method for maintaining the product table
+    public static final String SQL_CREATE_PRODUCT =
+            "CREATE TABLE" + ProductTable.TABLE_NAME + "(" +
+                    ProductTable._ID + " INTEGER PRIMARY KEY," +
+                    ProductTable.COLUMN_1 + " TEXT," +
+                    ProductTable.COLUMN_2 + " INTEGER," +
+                    ProductTable.COLUMN_3 + " TEXT)";
+
+    public static final String SQL_DELETE_PRODUCT =
+            "DROP TABLE IF EXISTS " + ProductTable.TABLE_NAME;
 
 }
