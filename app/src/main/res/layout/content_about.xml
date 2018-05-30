@@ -8,4 +8,166 @@
     tools:context="develop.elbarberoapptest.AboutActivity"
     tools:showIn="@layout/activity_about">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:contentDescription="@string/about_image_description"
+                android:scaleType="fitXY"
+                android:src="@drawable/about_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_email_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:text="@string/about_txt_info_email"
+                app:layout_constraintEnd_toStartOf="@+id/txt_email_info_value"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+            <Button
+                android:id="@+id/txt_email_info_value"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="32dp"
+                android:padding="0dp"
+                android:textSize="12sp"
+                android:gravity="center"
+                android:text="@string/about_txt_info_email_value"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/txt_email_info"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+            <TextView
+                android:id="@+id/txt_place_santa_ana"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/about_place_santa_ana"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_email_info" />
+
+            <TextView
+                android:id="@+id/txt_place_pinares"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/about_place_pinares"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_place_santa_ana" />
+
+            <TextView
+                android:id="@+id/txt_place_heredia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/about_place_heredia"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_place_pinares" />
+
+            <TextView
+                android:id="@+id/txt_place_alajuela"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/about_place_alajuela"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_place_heredia" />
+
+            <TextView
+                android:id="@+id/txt_social_networks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="@string/about_social_networks"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_place_alajuela" />
+
+            <ImageButton
+                android:id="@+id/ibtn_facebook_network"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/about_facebook_image_description"
+                app:layout_constraintEnd_toStartOf="@+id/ibtn_instagram_network"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_social_networks"
+                app:srcCompat="@drawable/facebook" />
+
+            <ImageButton
+                android:id="@+id/ibtn_instagram_network"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/about_instagram_image_description"
+                app:layout_constraintEnd_toStartOf="@+id/ibtn_youtube_network"
+                app:layout_constraintStart_toEndOf="@+id/ibtn_facebook_network"
+                app:layout_constraintTop_toBottomOf="@+id/txt_social_networks"
+                app:srcCompat="@drawable/instagram" />
+
+            <ImageButton
+                android:id="@+id/ibtn_youtube_network"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="24dp"
+                android:contentDescription="@string/about_youtube_image_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ibtn_instagram_network"
+                app:layout_constraintTop_toBottomOf="@+id/txt_social_networks"
+                app:srcCompat="@drawable/youtube" />
+
+            <TextView
+                android:id="@+id/txt_developer_info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center"
+                android:text="@string/about_developer_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ibtn_instagram_network" />
+
+            <TextView
+                android:id="@+id/txt_copyrights"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:text="@string/about_footer_copyrights_info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_developer_info" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

@@ -86,8 +86,22 @@
     <string name="register_etx_user_name_hint">Nombre</string>
     <string name="register_etx_user_last_name_hint">Apellido</string>
     <string name="register_etx_username_hint">Escriba su nombre de usuario</string>
-    <string name="register_etx_email_hint">Correo electrónico</string>
+    <string name="register_etx_email_hint">Escriba su correo electrónico</string>
     <string name="register_etx_password_hint">Escriba su contraseña</string>
     <string name="register_etx_password_validate_hint">Vuelva a escribir su contraseña</string>
     <string name="register_button">Crear cuenta</string>
+
+    <string name="about_image_description">Imagen representativa para pantalla de acerca de</string>
+    <string name="about_txt_info_email">Más información al correo: </string>
+    <string name="about_txt_info_email_value">info@elbarberocr.com</string>
+    <string name="about_place_santa_ana">Santa Ana: 2282–9922</string>
+    <string name="about_place_pinares">Pinares: 2271–4747</string>
+    <string name="about_place_heredia">Heredia: 2260–9777</string>
+    <string name="about_place_alajuela">Alajuela: 2430–1081</string>
+    <string name="about_social_networks">Nuestras redes sociales:</string>
+    <string name="about_facebook_image_description">Imagen representativa del contacto en Facebook</string>
+    <string name="about_instagram_image_description">Imagen representativa del contacto en Instamgram</string>
+    <string name="about_youtube_image_description">Imagen representativa del contacto en YouTube</string>
+    <string name="about_footer_copyrights_info">© 2018 El Barbero Gentlemen\'s Shop</string>
+    <string name="about_developer_info">Desarrollado por: Adrián Amador</string>
 </resources>
